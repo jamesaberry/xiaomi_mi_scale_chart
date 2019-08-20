@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Ng7ChartJs": {
+    "miCharts": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Ng7ChartJs",
+            "outputPath": "dist/miCharts",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Ng7ChartJs:build"
+            "browserTarget": "miCharts:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Ng7ChartJs:build:production"
+              "browserTarget": "miCharts:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Ng7ChartJs:build"
+            "browserTarget": "miCharts:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "Ng7ChartJs-e2e": {
+    "miCharts-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Ng7ChartJs:serve"
+            "devServerTarget": "miCharts:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Ng7ChartJs:serve:production"
+              "devServerTarget": "miCharts:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "Ng7ChartJs"
+  "defaultProject": "miCharts"
 }
