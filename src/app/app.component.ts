@@ -1,5 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
 import { freeApiService } from '../services/freeapi.service';
 import { ScaleEntry } from './classes/ScaleEntry';
 
@@ -17,47 +16,23 @@ export class AppComponent implements OnInit {
   scaleEntries:ScaleEntry[];
   weightData=[];
   dateData=[];
+  
+  public graph = {
+    data: [
+        { x: this.dateData, y: this.weightData, type: 'scatter', mode: 'lines', 'line': {'shape': 'spline', 'smoothing': .5} }
+    ],
+    layout: {}
+  };
 
   async createChart(weightData, dateData) {
     await this._freeApiService.getcomments().subscribe(data => {
         this.scaleEntries = data;
+        this.scaleEntries.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1)
         this.scaleEntries.forEach(function (item, index) {
             weightData.push(parseFloat(item.weight));
             var date = new Date((parseFloat(item.timestamp) * 1000));
-            dateData.push(date.getFullYear() + "-" 
-                + (date.getMonth() + 1) + "-"
-                + date.getDate() + " "
-                + date.getHours()+ ":"
-                + date.getMinutes() + ":"
-                + date.getSeconds());
+            dateData.push(date);
           });
-          this.LineChart = new Chart('lineChart', {
-            type: 'line',
-            data: {
-                labels: this.dateData,
-                datasets: [{
-                    label: 'Weight in lbs',
-                    data: this.weightData,
-                    fill:false,
-                    lineTension:0.2,
-                    borderColor:"red",
-                    borderWidth: 1
-                }]
-            }, 
-            options: {
-            title:{
-                text:"Line Chart",
-                display:true
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:false
-                    }
-                }]
-            }
-            }
-        });
     });
   }
 

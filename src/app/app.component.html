@@ -3,8 +3,6 @@
   <h1>
     {{ title }}
   </h1>
-  <canvas id="lineChart" ></canvas>
 </div>
 
-
-<router-outlet></router-outlet>
+<plotly-plot [data]="graph.data" [layout]="graph.layout" [useResizeHandler]="true" [style]="{position: 'relative', width: '100%', height: '100%'}"></plotly-plot>

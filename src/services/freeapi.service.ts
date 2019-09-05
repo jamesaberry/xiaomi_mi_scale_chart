@@ -9,6 +9,6 @@ export class freeApiService {
     }
 
     getcomments(): Observable<any> {
-        return this.httpclient.get("http://localhost:3000/miscale");
+        return this.httpclient.get("http://192.168.2.119:3000/miscale");
     }
 }

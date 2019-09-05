@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { freeApiService } from '../services/freeapi.service';
 
+import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import { PlotlyModule } from 'angular-plotly.js';
+
+PlotlyModule.plotlyjs = PlotlyJS;
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +19,8 @@ import { freeApiService } from '../services/freeapi.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    PlotlyModule
   ],
   providers: [freeApiService],
   bootstrap: [AppComponent]
